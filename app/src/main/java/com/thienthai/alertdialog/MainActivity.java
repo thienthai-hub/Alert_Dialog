@@ -19,11 +19,11 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ListView lv;
-    ArrayList<String> arrayList;
-    ArrayAdapter arrayAdapter;
-    Button btnAdd, btnEdit;
-    EditText edt;
+        ListView lv;
+        ArrayList<String> arrayList;
+        ArrayAdapter arrayAdapter;
+        Button btnAdd, btnEdit;
+        EditText edt;
     int vitri = -1;
 
     @Override
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.lvDanhsach);
         arrayList = new ArrayList<>();
         Arraylist();
-        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         lv.setAdapter(arrayAdapter);
 
 //      add
@@ -69,39 +69,40 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-//      delete
-        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                XacNhanXoa(position);
-                edt.getText().clear();
-                return false;
-            }
+    //      delete
+            lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    XacNhanXoa(position);
+                    edt.getText().clear();
+                    return false;
+                }
         });
     }
 
-//    hàm xác nhận xóa Alert
-    private void XacNhanXoa(int vitri){
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-        alertDialog.setTitle("Thông Báo");
-        alertDialog.setIcon(R.mipmap.ic_launcher);
-        alertDialog.setMessage("Bạn có chắc muốn xóa không");
-        alertDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                edt.getText().clear();
-                arrayList.remove(vitri);
-                arrayAdapter.notifyDataSetChanged();
-            }
-        });
-        alertDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+    //    hàm xác nhận xóa Alert
+                    private void XacNhanXoa(int vitri){
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                        alertDialog.setTitle("Thông Báo");
+                        alertDialog.setIcon(R.mipmap.ic_launcher);
+                        alertDialog.setMessage("Bạn có chắc muốn xóa không");
+                        alertDialog.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                edt.getText().clear();
+                                arrayList.remove(vitri);
+                                arrayAdapter.notifyDataSetChanged();
+                            }
+                        });
+                        alertDialog.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
-        alertDialog.show();
-    }
+                }
+            });
+    //        phài show() thì nó mới hiện ra
+            alertDialog.show();
+        }
 //    hàm ánh xạ
     private void Arraylist(){
         arrayList.add("php");
