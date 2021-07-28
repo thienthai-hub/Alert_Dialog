@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewbtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        btnAdd = (Button) findViewById(R.id.btnAdd);
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            btnAdd = (Button) findViewById(R.id.btnAdd);
         btnEdit = (Button) findViewById(R.id.btnEdit);
         edt = (EditText) findViewById(R.id.edt);
         lv = (ListView) findViewById(R.id.lvDanhsach);
@@ -84,13 +84,13 @@ public class MainActivity extends AppCompatActivity {
                     return false;
                 }
         });
-//customdialog
-        textViewbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                customDialog();
-            }
-        });
+    //customdialog
+            textViewbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    customDialog();
+                }
+            });
     }
 
     //    hàm xác nhận xóa Alert
@@ -126,41 +126,41 @@ public class MainActivity extends AppCompatActivity {
         }
 
 //    custom dialog
-    private void customDialog(){
-        Dialog dialog = new Dialog(this);
+        private void customDialog(){
+            Dialog dialog = new Dialog(this);
 
-        //không cho show title requestWindowFeature có san trong máy
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            //không cho show title requestWindowFeature có san trong máy
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        dialog.setContentView(R.layout.alert_dialog_custom);
+            dialog.setContentView(R.layout.alert_dialog_custom);
 
-//        set khi chạm màng hình bên ngoài kok bị hủy setCanceledOnTouchOutside
-        dialog.setCanceledOnTouchOutside(false);
+    //        set khi chạm màng hình bên ngoài kok bị hủy setCanceledOnTouchOutside
+            dialog.setCanceledOnTouchOutside(false);
 
-//        Anhxa
-        EditText edtusername = (EditText) dialog.findViewById(R.id.adtName);
-        EditText edtPassWord =  (EditText) dialog.findViewById(R.id.edtPassword);
-        Button btnAcess = (Button) dialog.findViewById(R.id.btnAcess);
-        Button btnCancel = (Button) dialog.findViewById(R.id.btnHuy);
+    //        Anhxa
+            EditText edtusername = (EditText) dialog.findViewById(R.id.adtName);
+            EditText edtPassWord =  (EditText) dialog.findViewById(R.id.edtPassword);
+            Button btnAcess = (Button) dialog.findViewById(R.id.btnAcess);
+            Button btnCancel = (Button) dialog.findViewById(R.id.btnHuy);
 
-        btnAcess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = edtusername.getText().toString().trim();
-                String password = edtPassWord.getText().toString().trim();
-                if(name.equals("ThienThai") && password.equals("123456")){
-                    Toast.makeText(MainActivity.this, "Sucess", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainActivity.this, "Wrong", Toast.LENGTH_SHORT).show();
+            btnAcess.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String name = edtusername.getText().toString().trim();
+                    String password = edtPassWord.getText().toString().trim();
+                    if(name.equals("ThienThai") && password.equals("123456")){
+                        Toast.makeText(MainActivity.this, "Sucess", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(MainActivity.this, "Wrong", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
-        });
-        dialog.show();
+            });
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.cancel();
+                }
+            });
+            dialog.show();
     }
 }
